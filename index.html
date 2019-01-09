@@ -314,7 +314,7 @@
       
         
           
-            <p>原来在利用docker启动mysql，然后通过数据库连接工具进行连接的时候一直出现Authorization Plugin ‘caching_sha2_password’ cannot be loaded，后来才发现是因为docker下载镜像的时候会默认为5.8版本，在网上查看的时候得知5.8版本8.0改变了 身份验证插件，所以为了防止这种问题出现，需要在下载docker指定为5.7的版本<br><img src="/images/docker7and8.jpg" alt=""><br>TAG为5.7的是通过docker pull mysql:5.7下载的，而latest是通过docker pull mysql下载的。当下载的版本是5.7的mysql，然后启动此容器，再连接数据库的时候将不会报错。</p>
+            <p>原来在利用docker启动mysql，然后通过数据库连接工具进行连接的时候一直出现Authorization Plugin ‘caching_sha2_password’ cannot be loaded，后来才发现是因为docker下载镜像的时候会默认为5.8版本，在网上查看的时候得知5.8版本改变了身份验证插件，所以为了防止这种问题出现，需要在下载docker指定为5.7的版本<br><img src="/images/docker7and8.png" alt=""><br>TAG为5.7的是通过docker pull mysql:5.7下载的，而latest是通过docker pull mysql下载的。当下载的版本是5.7的mysql，然后启动此容器，再连接数据库的时候将不会报错。</p>
 
           
         
