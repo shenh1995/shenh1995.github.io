@@ -93,7 +93,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="问题：Given a binary tree, return all root-to-leaf paths.Note: A leaf is a node with no children.">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2019-04-24T02:07:35.238Z">
+<meta property="og:updated_time" content="2019-04-24T02:11:27.388Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode 257 Binary Tree Paths java">
 <meta name="twitter:description" content="问题：Given a binary tree, return all root-to-leaf paths.Note: A leaf is a node with no children.">
@@ -339,41 +339,10 @@
       
 
       
-        <p><strong>问题：</strong><br>Given a binary tree, return all root-to-leaf paths.<br>Note: A leaf is a node with no children.<br><a id="more"></a><br>Example:<br>Input:</p>
-<p>   1<br> /   \<br>2     3<br> \<br>  5</p>
+        <p><strong>问题：</strong><br>Given a binary tree, return all root-to-leaf paths.<br>Note: A leaf is a node with no children.<br><a id="more"></a><br>Example:<br>Input:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">   1</span><br><span class="line"> /   \</span><br><span class="line">2     3</span><br><span class="line"> \</span><br><span class="line">  5</span><br></pre></td></tr></table></figure></p>
 <p>Output: [“1-&gt;2-&gt;5”, “1-&gt;3”]</p>
 <p>Explanation: All root-to-leaf paths are: 1-&gt;2-&gt;5, 1-&gt;3</p>
-<p><strong>解答</strong><br>public class L257 {<br>    class TreeNode{<br>        int val;<br>        TreeNode left;<br>        TreeNode right;</p>
-<pre><code>    public TreeNode(int val) {
-        this.val = val;
-    }
-}
-
-List&lt;String&gt; resultList = new ArrayList&lt;String&gt;();
-
-public List&lt;String&gt; binaryTreePaths(TreeNode root) {
-    deepSearch(root, new StringBuilder());
-    return resultList;
-}
-//用一个递归就odek
-public void deepSearch(TreeNode root, StringBuilder stringBuilder) {
-    if(root == null) 
-        return ;
-    if(root.left == null &amp;&amp; root.right == null) {
-        stringBuilder.append(root.val);
-        resultList.add(stringBuilder.toString());
-        return ;
-    }
-
-    stringBuilder.append(root.val + &quot;-&gt;&quot;);
-
-    if(root.left != null)
-        deepSearch(root.left, new StringBuilder(stringBuilder.toString()));
-    if(root.right != null)
-        deepSearch(root.right, new StringBuilder(stringBuilder.toString()));
-
-}
-</code></pre><p>}</p>
+<p><strong>解答</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">public class L257 &#123;</span><br><span class="line">	class TreeNode&#123;</span><br><span class="line">		int val;</span><br><span class="line">		TreeNode left;</span><br><span class="line">		TreeNode right;</span><br><span class="line">		</span><br><span class="line">		public TreeNode(int val) &#123;</span><br><span class="line">			this.val = val;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	List&lt;String&gt; resultList = new ArrayList&lt;String&gt;();</span><br><span class="line">	</span><br><span class="line">	public List&lt;String&gt; binaryTreePaths(TreeNode root) &#123;</span><br><span class="line">		deepSearch(root, new StringBuilder());</span><br><span class="line">		return resultList;</span><br><span class="line">	&#125;</span><br><span class="line">	//用一个递归就odek</span><br><span class="line">	public void deepSearch(TreeNode root, StringBuilder stringBuilder) &#123;</span><br><span class="line">		if(root == null) </span><br><span class="line">			return ;</span><br><span class="line">		if(root.left == null &amp;&amp; root.right == null) &#123;</span><br><span class="line">			stringBuilder.append(root.val);</span><br><span class="line">			resultList.add(stringBuilder.toString());</span><br><span class="line">			return ;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		stringBuilder.append(root.val + &quot;-&gt;&quot;);</span><br><span class="line">		</span><br><span class="line">		if(root.left != null)</span><br><span class="line">			deepSearch(root.left, new StringBuilder(stringBuilder.toString()));</span><br><span class="line">		if(root.right != null)</span><br><span class="line">			deepSearch(root.right, new StringBuilder(stringBuilder.toString()));</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
