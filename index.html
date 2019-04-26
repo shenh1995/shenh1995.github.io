@@ -259,6 +259,139 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://shenh1995.github.io/2019/04/26/Leetcode-80-Remove-Duplicates-from-Sorted-Arrat/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="shen hong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/personal.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/26/Leetcode-80-Remove-Duplicates-from-Sorted-Arrat/" itemprop="url">Leetcode 80 Remove Duplicates from Sorted Array ||</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-26T10:07:16+08:00">
+                2019-04-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/04/26/Leetcode-80-Remove-Duplicates-from-Sorted-Arrat/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/26/Leetcode-80-Remove-Duplicates-from-Sorted-Arrat/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>问题：</strong><br>Given a sorted array nums, remove the duplicates in-place such that duplicates appeared at most twice and return the new length.<br>Do not allocate extra space for another array, you must do this by modifying the input array in-place with O(1) extra memory.<br>Example 1:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Given nums = [1,1,1,2,2,3],</span><br><span class="line"></span><br><span class="line">Your function should return length = 5, with the first five elements of nums being 1, 1, 2, 2 and 3 respectively.</span><br><span class="line"></span><br><span class="line">It doesn&apos;t matter what you leave beyond the returned length.</span><br></pre></td></tr></table></figure></p>
+<p>Example 2:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Given nums = [0,0,1,1,1,1,2,3,3],</span><br><span class="line"></span><br><span class="line">Your function should return length = 7, with the first seven elements of nums being modified to 0, 0, 1, 1, 2, 3 and 3 respectively.</span><br><span class="line"></span><br><span class="line">It doesn&apos;t matter what values are set beyond the returned length.</span><br></pre></td></tr></table></figure></p>
+<p>Clarification:<br>Confused why the returned value is an integer but your answer is an array?<br>Note that the input array is passed in by reference, which means modification to the input array will be known to the caller as well.<br>Internally you can think of this:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// nums is passed in by reference. (i.e., without making a copy)</span><br><span class="line">int len = removeDuplicates(nums);</span><br><span class="line"></span><br><span class="line">// any modification to nums in your function would be known by the caller.</span><br><span class="line">// using the length returned by your function, it prints the first len elements.</span><br><span class="line">for (int i = 0; i &lt; len; i++) &#123;</span><br><span class="line">    print(nums[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>解答</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">public class L80 &#123;</span><br><span class="line">	/*</span><br><span class="line">	 * 设置两个指针，i和j，如果有三个相等，则j一直往前，最后赋值</span><br><span class="line">	 */</span><br><span class="line">    public int removeDuplicates(int[] nums) &#123;</span><br><span class="line">      if(nums == null)</span><br><span class="line">    	  return 0;</span><br><span class="line">      if(nums.length &lt;= 2)</span><br><span class="line">    	  return nums.length;</span><br><span class="line">      int i = 1;</span><br><span class="line">      int j = 2;</span><br><span class="line">      while (j &lt; nums.length) &#123;</span><br><span class="line">		if(nums[j] == nums[i] &amp;&amp; nums[j] == nums[i - 1]) &#123;</span><br><span class="line">			j ++;</span><br><span class="line">		&#125;else &#123;</span><br><span class="line">			i ++;</span><br><span class="line">			nums[i] = nums[j];</span><br><span class="line">			j ++;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">      return i + 1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://shenh1995.github.io/2019/04/25/头条面试-后台研发工程师/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1503,7 +1636,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
