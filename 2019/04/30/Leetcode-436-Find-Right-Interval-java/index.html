@@ -86,13 +86,17 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="https://shenh1995.github.io/page/2/index.html">
+<meta name="description" content="问题：Given a set of intervals, for each of the interval i, check if there exists an interval j whose start point is bigger than or equal to the end point of the interval i, which can be called that j is">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Leetcode 436 Find Right Interval java">
+<meta property="og:url" content="https://shenh1995.github.io/2019/04/30/Leetcode-436-Find-Right-Interval-java/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="问题：Given a set of intervals, for each of the interval i, check if there exists an interval j whose start point is bigger than or equal to the end point of the interval i, which can be called that j is">
 <meta property="og:locale" content="zh-cn">
+<meta property="og:updated_time" content="2019-04-30T02:51:26.817Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="Leetcode 436 Find Right Interval java">
+<meta name="twitter:description" content="问题：Given a set of intervals, for each of the interval i, check if there exists an interval j whose start point is bigger than or equal to the end point of the interval i, which can be called that j is">
 
 
 
@@ -122,13 +126,13 @@
 
 
 
-  <link rel="canonical" href="https://shenh1995.github.io/page/2/">
+  <link rel="canonical" href="https://shenh1995.github.io/2019/04/30/Leetcode-436-Find-Right-Interval-java/">
 
 
 
 
 
-  <title>Hexo</title>
+  <title>Leetcode 436 Find Right Interval java | Hexo</title>
   
 
 
@@ -150,8 +154,7 @@
   
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -244,9 +247,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -259,7 +262,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://shenh1995.github.io/2019/01/09/Authorization-Plugin-caching-sha2-password-cannot-be-loaded/">
+    <link itemprop="mainEntityOfPage" href="https://shenh1995.github.io/2019/04/30/Leetcode-436-Find-Right-Interval-java/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="shen hong">
@@ -276,9 +279,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/01/09/Authorization-Plugin-caching-sha2-password-cannot-be-loaded/" itemprop="url">Authorization Plugin 'caching_sha2_password' cannot be loaded</a></h1>
+          <h1 class="post-title" itemprop="name headline">Leetcode 436 Find Right Interval java</h1>
         
 
         <div class="post-meta">
@@ -290,8 +291,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-09T15:00:37+08:00">
-                2019-01-09
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-30T10:49:03+08:00">
+                2019-04-30
               </time>
             
 
@@ -309,8 +310,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/01/09/Authorization-Plugin-caching-sha2-password-cannot-be-loaded/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/01/09/Authorization-Plugin-caching-sha2-password-cannot-be-loaded/" itemprop="commentCount"></span>
+                <a href="/2019/04/30/Leetcode-436-Find-Right-Interval-java/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/30/Leetcode-436-Find-Right-Interval-java/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -338,24 +339,49 @@
       
 
       
-        
-          <p>原来在利用docker启动mysql，然后通过数据库连接工具进行连接的时候一直出现Authorization Plugin ‘caching_sha2_password’ cannot be loaded，后来才发现是因为docker下载镜像的时候会默认为5.8版本，在网上查看的时候得知5.8版本改变了身份验证插件，所以为了防止这种问题出现，需要在下载docker指定为5.7的版本<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/01/09/Authorization-Plugin-caching-sha2-password-cannot-be-loaded/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
+        <p><strong>问题：</strong><br>Given a set of intervals, for each of the interval i, check if there exists an interval j whose start point is bigger than or equal to the end point of the interval i, which can be called that j is on the “right” of i.<br>For any interval i, you need to store the minimum interval j’s index, which means that the interval j has the minimum start point to build the “right” relationship for interval i. If the interval j doesn’t exist, store -1 for the interval i. Finally, you need output the stored value of each interval as an array.<br>Note:<br>You may assume the interval’s end point is always bigger than its start point.<br>You may assume none of these intervals have the same start point.</p>
+<p>Example 1:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Input: [ [1,2] ]</span><br><span class="line"></span><br><span class="line">Output: [-1]</span><br><span class="line"></span><br><span class="line">Explanation: There is only one interval in the collection, so it outputs -1.</span><br></pre></td></tr></table></figure></p>
+<p>Example 2:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Input: [ [3,4], [2,3], [1,2] ]</span><br><span class="line"></span><br><span class="line">Output: [-1, 0, 1]</span><br><span class="line"></span><br><span class="line">Explanation: There is no satisfied &quot;right&quot; interval for [3,4].</span><br><span class="line">For [2,3], the interval [3,4] has minimum-&quot;right&quot; start point;</span><br><span class="line">For [1,2], the interval [2,3] has minimum-&quot;right&quot; start point.</span><br></pre></td></tr></table></figure></p>
+<p>Example 3:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Input: [ [1,4], [2,3], [3,4] ]</span><br><span class="line"></span><br><span class="line">Output: [-1, 2, -1]</span><br><span class="line"></span><br><span class="line">Explanation: There is no satisfied &quot;right&quot; interval for [1,4] and [3,4].</span><br><span class="line">For [2,3], the interval [3,4] has minimum-&quot;right&quot; start point.</span><br></pre></td></tr></table></figure></p>
+<p><strong>解答</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line"> * 道题给了我们一堆区间，让我们找每个区间的最近右区间，要保证右区间的start要大于等于当前区间的end，</span><br><span class="line"> * 由于区间的顺序不能变，所以我们不能给区间排序，我们需要建立区间的start和该区间位置之间的映射，</span><br><span class="line"> * 由于题目中限定了每个区间的start都不同，所以不用担心一对多的情况出现。然后我们把所有的区间的start</span><br><span class="line"> * 都放到一个数组中，并对这个数组进行降序排序，那么start值大的就在数组前面。然后我们遍历区间集合，对于</span><br><span class="line"> * 每个区间，我们在数组中找第一个小于当前区间的end值的位置，如果数组中第一个数就小于当前区间的end，那么说明该区间不存在右区间，</span><br><span class="line"> * 结果res中加入-1；如果找到了第一个小于当前区间end的位置，那么往前推一个就是第一个大于等于</span><br><span class="line"> * 当前区间end的start，我们在哈希表中找到该区间的坐标加入结果res中即可</span><br><span class="line"> */</span><br><span class="line">public class L436 &#123;</span><br><span class="line">	/*</span><br><span class="line">	 * 按照start排序，此题是用treemap来排序的，然后按照上面的方法找出第一个大于等于end的位置</span><br><span class="line">	 */</span><br><span class="line">	 public int[] findRightInterval(int[][] intervals) &#123;</span><br><span class="line">		 int [] result = new int [intervals.length];</span><br><span class="line">		 TreeMap&lt;Integer, Integer&gt; map = new TreeMap&lt;Integer, Integer&gt;();</span><br><span class="line">		 for(int i = 0; i &lt; intervals.length; i ++) &#123;</span><br><span class="line">			 map.put(intervals[i][0], i);</span><br><span class="line">		 &#125;</span><br><span class="line">		 for(int i = 0; i &lt; intervals.length; i ++) &#123;</span><br><span class="line">			 //使用treemap返回至少大于等于给定值，也就是至少大于等于intervals[i][1]的值</span><br><span class="line">			 Map.Entry&lt;Integer, Integer&gt; entry = map.ceilingEntry(intervals[i][1]);</span><br><span class="line">			 result[i] = (entry != null) ? entry.getValue() : -1;</span><br><span class="line">		 &#125;</span><br><span class="line">		 return result;</span><br><span class="line">	 &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
       
-    </p></div>
+    </div>
     
     
     
 
     
 
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>感谢你对我的支持 让我继续努力分享有用的技术和知识点.</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="shen hong WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.png" alt="shen hong Alipay">
+        <p>Alipay</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
     
 
     
@@ -364,146 +390,28 @@
       
 
       
-
-      
-
       
       
-        <div class="post-eof"></div>
+
       
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://shenh1995.github.io/2019/01/03/hello-world/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="shen hong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/personal.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/01/03/hello-world/" itemprop="url">Hello World</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-03T17:02:10+08:00">
-                2019-01-03
-              </time>
+              <a href="/2019/04/28/Leetcode-377-Combination-Sum-IV-Java/" rel="next" title="Leetcode 377 Combination Sum IV Java">
+                <i class="fa fa-chevron-left"></i> Leetcode 377 Combination Sum IV Java
+              </a>
             
+          </div>
 
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/01/03/hello-world/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/01/03/hello-world/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/01/03/hello-world/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </p></div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -513,14 +421,11 @@
   </article>
 
 
-    
-  </section>
 
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
-  </nav>
-
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -528,6 +433,13 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
 
         </div>
         
@@ -765,6 +677,12 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+<script src="/js/src/photoswipe.min.js?v=5.1.4"></script>
+<script src="/js/src/photoswipe-ui-default.min.js?v=5.1.4"></script>
+
+
 
   
 
